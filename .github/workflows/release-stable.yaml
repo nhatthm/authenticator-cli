@@ -36,7 +36,7 @@ jobs:
         os: [ darwin, linux, windows ]
         arch: [ amd64, arm64 ]
     runs-on: ubuntu-latest
-    needs: [lint, test]
+    needs: [setup]
     env:
       GO_LATEST_VERSION: ${{ needs.setup.outputs.go-latest-version }}
     steps:
