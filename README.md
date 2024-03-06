@@ -2,8 +2,8 @@
 
 [![GitHub Releases](https://img.shields.io/github/v/release/nhatthm/authenticator-cli)](https://github.com/nhatthm/authenticator-cli/releases/latest)
 [![Build Status](https://github.com/nhatthm/authenticator-cli/actions/workflows/release-edge.yaml/badge.svg)](https://github.com/nhatthm/authenticator-cli/actions/workflows/release-edge.yaml)
-[![Go Report Card](https://goreportcard.com/badge/go.nhat.io/authenticator-cli)](https://goreportcard.com/report/go.nhat.io/authenticator-cli)
-[![GoDevDoc](https://img.shields.io/badge/dev-doc-00ADD8?logo=go)](https://pkg.go.dev/go.nhat.io/authenticator-cli)
+[![Go Report Card](https://goreportcard.com/badge/github.com/nhatthm/authenticator-cli)](https://goreportcard.com/report/github.com/nhatthm/authenticator-cli)
+[![GoDevDoc](https://img.shields.io/badge/dev-doc-00ADD8?logo=go)](https://pkg.go.dev/github.com/nhatthm/authenticator-cli)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=PJZSGJN57TDJY)
 
 <!--
