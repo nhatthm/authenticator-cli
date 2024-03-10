@@ -79,14 +79,14 @@ Global Flags:
 After [adding an account](#add-a-new-account), you can generate an OTP by running `authenticator otp <namespace> <account>`. For example:
 
 ```bash
-$ authenticator otp demo john.doe@example.com
+$ authenticator otp -n demo john.doe@example.com
 103281
 ```
 
 If you want to generate and copy the OTP to the clipboard, use the `--copy` flag, for example:
 
 ```bash
-$ authenticator otp demo john.doe@example.com --copy
+$ authenticator otp -n demo john.doe@example.com --copy
 ```
 
 > [!TIP]

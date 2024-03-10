@@ -13,30 +13,44 @@ import (
 )
 
 func accountDeleteCommand() *cobra.Command {
+	cfg := deleteAccountConfig{
+		Namespace: defaultNamespace,
+	}
+
 	cmd := &cobra.Command{
 		Use:   "delete <namespace> <account>",
 		Short: "Delete an account",
 		Long:  "Delete an account",
 		Args: func(_ *cobra.Command, args []string) error {
 			if l := len(args); l == 0 {
-				return errNamespaceAndAccountAreRequired
-			} else if l == 1 {
 				return errAccountIsRequired
-			} else if l > 2 {
+			} else if l > 1 {
 				return errTooManyArgs
 			}
 
 			return nil
 		},
 		RunE: func(_ *cobra.Command, args []string) error {
-			return deleteAccount(args[0], args[1])
+			return deleteAccount(cfg.Namespace, args[0])
 		},
 	}
+
+	cmd.Flags().StringVarP(&cfg.Namespace, "namespace", "n", cfg.Namespace, "namespace")
 
 	return cmd
 }
 
+type deleteAccountConfig struct {
+	Namespace string
+}
+
 func deleteAccount(namespace, account string) error {
+	if namespace == "" {
+		return errNamespaceIsRequired
+	} else if account == "" {
+		return errAccountIsRequired
+	}
+
 	hasAccess := sudo.Check()
 	if !hasAccess {
 		return errNoAccessToAccount
@@ -45,7 +59,7 @@ func deleteAccount(namespace, account string) error {
 	confirm := false
 
 	input := huh.NewConfirm().
-		Title(fmt.Sprintf("Are you sure you want to delete %q account from %q?", account, namespace)).
+		Title(fmt.Sprintf("Are you sure you want to delete %q account in %q namespace?", account, namespace)).
 		Description("This action cannot be undone.").
 		Value(&confirm)
 
@@ -64,7 +78,7 @@ func deleteAccount(namespace, account string) error {
 		return nil
 	}
 
-	err = authenticator.DeleteAccountInNamespace(namespace, account)
+	err = authenticator.DeleteAccount(namespace, account)
 	if err != nil {
 		return err
 	}

@@ -14,7 +14,9 @@ import (
 )
 
 func otpCommand(logger *ctxd.Logger) *cobra.Command {
-	copyToClipboard := false
+	cfg := otpConfig{
+		Namespace: defaultNamespace,
+	}
 
 	cmd := &cobra.Command{
 		Use:   "otp",
@@ -22,33 +24,40 @@ func otpCommand(logger *ctxd.Logger) *cobra.Command {
 		Long:  "Generate OTP",
 		Args: func(_ *cobra.Command, args []string) error {
 			if l := len(args); l == 0 {
-				return errNamespaceAndAccountAreRequired
-			} else if l == 1 {
 				return errAccountIsRequired
-			} else if l > 2 {
+			} else if l > 1 {
 				return errTooManyArgs
 			}
 
 			return nil
 		},
 		RunE: func(cmd *cobra.Command, args []string) error {
-			return generateOTP(cmd.Context(), cmd.OutOrStdout(), args[0], args[1], copyToClipboard, *logger)
+			cfg.Output = cmd.OutOrStdout()
+
+			return generateOTP(cmd.Context(), cfg, args[0], *logger)
 		},
 	}
 
-	cmd.Flags().BoolVar(&copyToClipboard, "copy", false, "copy the generated otp code to the clipboard")
+	cmd.Flags().StringVarP(&cfg.Namespace, "namespace", "n", cfg.Namespace, "namespace")
+	cmd.Flags().BoolVar(&cfg.CopyToClipboard, "copy", false, "copy the generated otp code to the clipboard")
 
 	return cmd
 }
 
-func generateOTP(ctx context.Context, stdout io.Writer, namespace, account string, copyToClipboard bool, logger ctxd.Logger) error {
-	otp, err := authenticator.GenerateTOTP(ctx, namespace, account)
+type otpConfig struct {
+	Namespace       string
+	CopyToClipboard bool
+	Output          io.Writer
+}
+
+func generateOTP(ctx context.Context, cfg otpConfig, account string, logger ctxd.Logger) error {
+	otp, err := authenticator.GenerateTOTP(ctx, cfg.Namespace, account)
 	if err != nil {
 		return err
 	}
 
-	if !copyToClipboard {
-		_, _ = fmt.Fprintln(stdout, otp)
+	if !cfg.CopyToClipboard {
+		_, _ = fmt.Fprintln(cfg.Output, otp)
 
 		return nil
 	}
