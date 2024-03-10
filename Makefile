@@ -1,5 +1,6 @@
 APP ?= authenticator
 
+WORK_DIR = $(shell pwd)
 BUILD_DIR ?= out
 VENDOR_DIR = vendor
 
@@ -8,11 +9,25 @@ GOLANGCI_LINT_VERSION ?= v1.55.2
 GO ?= go
 GOLANGCI_LINT ?= $(shell go env GOPATH)/bin/golangci-lint-$(GOLANGCI_LINT_VERSION)
 
+VHS_TAPES = $(subst .tape,.gif,$(shell find resources/docs -type f -name "*.tape" | sort))
+
 .PHONY: $(VENDOR_DIR)
 $(VENDOR_DIR):
 	@mkdir -p $(VENDOR_DIR)
 	@$(GO) mod vendor
 	@$(GO) mod tidy
+
+.PHONY: generate
+generate: generate-docs
+
+.PHONY: generate-docs
+generate-docs: $(VHS_TAPES)
+
+.PHONY: $(VHS_TAPES)
+$(VHS_TAPES):
+	@echo ">> generate $@"
+	@cd resources/docs; \
+		env PATH="$(WORK_DIR)/out:$$PATH" vhs < $(notdir $(basename $@)).tape
 
 .PHONY: lint
 lint: $(GOLANGCI_LINT)

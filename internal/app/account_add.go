@@ -15,7 +15,9 @@ import (
 )
 
 func accountAddCommand(logger *ctxd.Logger) *cobra.Command {
-	var cfg addAccountConfig
+	cfg := addAccountConfig{
+		Namespace: defaultNamespace,
+	}
 
 	cmd := &cobra.Command{
 		Use:   "add [-n <namespace>] [--qr </path/to/qr-code-image>]",
@@ -39,12 +41,13 @@ type addAccountConfig struct {
 
 func addAccountToNamespace(ctx context.Context, cfg addAccountConfig, logger ctxd.Logger) error { //nolint: cyclop,funlen
 	var (
-		namespace, account, totpSecret string
-		err                            error
+		namespace string
+		account   authenticator.Account
+		err       error
 	)
 
 	if cfg.QRCodeFile != "" {
-		totpSecret, account, _, err = authenticator.ParseTOTPQRCode(cfg.QRCodeFile)
+		account, err = authenticator.ParseTOTPQRCode(cfg.QRCodeFile)
 		if err != nil {
 			logger.Error(ctx, "failed to parse QR code", "err", err)
 
@@ -59,7 +62,7 @@ func addAccountToNamespace(ctx context.Context, cfg addAccountConfig, logger ctx
 		logger.Debug(ctx, "available namespaces", "namespaces", allNamespaces)
 	}
 
-	namespace, account, totpSecret, err = getUserInput(ctx, cfg.Namespace, account, totpSecret, allNamespaces, logger)
+	namespace, account, err = getUserInput(ctx, cfg.Namespace, account, allNamespaces, logger)
 
 	switch {
 	case err != nil:
@@ -68,15 +71,15 @@ func addAccountToNamespace(ctx context.Context, cfg addAccountConfig, logger ctx
 	case namespace == "":
 		return errNamespaceIsRequired
 
-	case account == "":
+	case account.Name == "":
 		return errAccountIsRequired
 
-	case totpSecret == "":
+	case account.TOTPSecret == "":
 		return errTOTPSecretIsRequired
 	}
 
-	fmt.Println(color.YellowString("Namespace:"), namespace)
-	fmt.Println(color.YellowString("Account:"), account)
+	fmt.Println(color.HiYellowString("⠿ Namespace:"), namespace)
+	fmt.Println(color.HiYellowString("⠿ Account:"), account.Name)
 	fmt.Println()
 
 	if !slices.Contains(allNamespaces, namespace) {
@@ -90,11 +93,7 @@ func addAccountToNamespace(ctx context.Context, cfg addAccountConfig, logger ctx
 		logger.Debug(ctx, "namespace created", "namespace", namespace)
 	}
 
-	if err := authenticator.AddAccountToNamespace(namespace, account); err != nil {
-		return err //nolint: wrapcheck
-	}
-
-	if err := authenticator.SetTOTPSecret(namespace, account, otp.TOTPSecret(totpSecret)); err != nil {
+	if err := authenticator.SetAccount(namespace, account); err != nil {
 		return err //nolint: wrapcheck
 	}
 
@@ -106,20 +105,21 @@ func addAccountToNamespace(ctx context.Context, cfg addAccountConfig, logger ctx
 func getUserInput( //nolint: funlen
 	ctx context.Context,
 	defaultNamespace string,
-	defaultAccount string,
-	defaultTOTPSecret string,
+	defaultAccount authenticator.Account,
 	allNamespaces []string,
 	logger ctxd.Logger,
-) (string, string, string, error) {
+) (string, authenticator.Account, error) {
 	var (
-		namespace, account, totpSecret, confirmTOTPSecret string
-		err                                               error
+		namespace, totpSecret, confirmTOTPSecret string
+
+		account authenticator.Account
+		err     error
 	)
 
 	fields := make([]huh.Field, 0, 4)
 	namespace = defaultNamespace
 	account = defaultAccount
-	totpSecret = defaultTOTPSecret
+	totpSecret = account.TOTPSecret.String()
 
 	if namespace == "" {
 		fields = append(fields, huh.NewInput().
@@ -147,7 +147,7 @@ func getUserInput( //nolint: funlen
 
 			return nil
 		}).
-		Value(&account),
+		Value(&account.Name),
 	)
 
 	if totpSecret == "" {
@@ -187,8 +187,10 @@ func getUserInput( //nolint: funlen
 			logger.Error(ctx, "failed to get user input", "err", err)
 		}
 
-		return "", "", "", err
+		return "", account, err
 	}
 
-	return namespace, account, totpSecret, nil
+	account.TOTPSecret = otp.TOTPSecret(totpSecret)
+
+	return namespace, account, nil
 }

@@ -142,8 +142,8 @@ github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82/go.mod h1:lgjkn3NuSvDf
 github.com/yuin/goldmark v1.4.13/go.mod h1:6yULJ656Px+3vBD8DxQVa3kxgyrAnzto9xy5taEt/CY=
 github.com/zalando/go-keyring v0.2.3 h1:v9CUu9phlABObO4LPWycf+zwMG7nlbb3t/B5wa97yms=
 github.com/zalando/go-keyring v0.2.3/go.mod h1:HL4k+OXQfJUWaMnqyuSOc0drfGPX2b51Du6K+MRgZMk=
-go.nhat.io/authenticator v0.1.0 h1:3HerK65+llA/QrUQj/0SAGvJCkW0uszma3uJZZRnUbw=
-go.nhat.io/authenticator v0.1.0/go.mod h1:imnraQLZs7oHHnhMjvndMYm+lDi5RzBn1KN2m2Dy8ts=
+go.nhat.io/authenticator v0.2.0 h1:pkEoidHrksAD+kFYNcVpYdHC6gBptohihLy9bABlpic=
+go.nhat.io/authenticator v0.2.0/go.mod h1:r88bHF/bb8cNANoefEvqifFQ0c3vLR2CGSFM+DtrUHc=
 go.nhat.io/clock v0.7.0 h1:L3t8s+bOqqMXlGcv2qgKhIHBFqYS7rB84gYOHl4F7iA=
 go.nhat.io/clock v0.7.0/go.mod h1:95+ixhxejL/vGxvfiJnrEh19gr03GLyJcTZo7UDr6kA=
 go.nhat.io/exec v0.7.0 h1:3jOkL2xc/16fI7oaJXdHu0QRG/YYrTsP5LnuaKEEI/Y=

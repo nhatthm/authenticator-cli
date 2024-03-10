@@ -14,7 +14,7 @@ require (
 	github.com/schollz/progressbar/v3 v3.14.2
 	github.com/spf13/cobra v1.8.0
 	github.com/stretchr/testify v1.9.0
-	go.nhat.io/authenticator v0.1.0
+	go.nhat.io/authenticator v0.2.0
 	go.nhat.io/exec v0.7.0
 	go.nhat.io/otp v0.5.0
 	go.uber.org/zap v1.27.0

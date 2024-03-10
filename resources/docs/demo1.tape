@@ -57,8 +57,7 @@ Set Framerate 24
 Set Width 1800
 Set Height 1000
 
-Type "authenticator account add" Sleep 1s Enter Sleep 2s
-Type "demo" Sleep 1s Enter Sleep 2s
+Type "authenticator account add -n demo" Sleep 1s Enter Sleep 2s
 Type "john.doe@example.com" Sleep 1s Enter Sleep 2s
 Type "NBSWY3DP" Sleep 1s Enter Sleep 2s
 Type "NBSWY3DP" Sleep 1s Enter
@@ -66,10 +65,10 @@ Type "NBSWY3DP" Sleep 1s Enter
 Sleep 3s
 
 Enter
-Type "authenticator otp demo john.doe@example.com" Sleep 1s Enter
+Type "authenticator otp -n demo john.doe@example.com" Sleep 1s Enter
 
 Enter
-Type "alias cotp='authenticator otp demo john.doe@example.com --copy'" Sleep 1s Enter
+Type "alias cotp='authenticator otp -n demo john.doe@example.com --copy'" Sleep 1s Enter
 Enter
 Type "# Generate and copy the OTP to clipboard" Sleep 1s Enter
 Type "cotp" Sleep 1s Enter

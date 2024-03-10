@@ -6,6 +6,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+const defaultNamespace = "default"
+
 var (
 	errNamespaceIsRequired = errors.New("namespace is required")
 	errNoAccessToNamespace = errors.New("no access to the namespace")
