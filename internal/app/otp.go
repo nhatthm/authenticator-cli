@@ -22,15 +22,7 @@ func otpCommand(logger *ctxd.Logger) *cobra.Command {
 		Use:   "otp",
 		Short: "Generate OTP",
 		Long:  "Generate OTP",
-		Args: func(_ *cobra.Command, args []string) error {
-			if l := len(args); l == 0 {
-				return errAccountIsRequired
-			} else if l > 1 {
-				return errTooManyArgs
-			}
-
-			return nil
-		},
+		Args:  exactAccountArgs(),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			cfg.Output = cmd.OutOrStdout()
 
@@ -51,7 +43,9 @@ type otpConfig struct {
 }
 
 func generateOTP(ctx context.Context, cfg otpConfig, account string, logger ctxd.Logger) error {
-	otp, err := authenticator.GenerateTOTP(ctx, cfg.Namespace, account)
+	otp, err := authenticator.GenerateTOTP(ctx, cfg.Namespace, account,
+		authenticator.WithLogger(logger),
+	)
 	if err != nil {
 		return err
 	}

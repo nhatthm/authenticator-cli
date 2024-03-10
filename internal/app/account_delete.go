@@ -21,15 +21,7 @@ func accountDeleteCommand() *cobra.Command {
 		Use:   "delete <namespace> <account>",
 		Short: "Delete an account",
 		Long:  "Delete an account",
-		Args: func(_ *cobra.Command, args []string) error {
-			if l := len(args); l == 0 {
-				return errAccountIsRequired
-			} else if l > 1 {
-				return errTooManyArgs
-			}
-
-			return nil
-		},
+		Args:  exactAccountArgs(),
 		RunE: func(_ *cobra.Command, args []string) error {
 			return deleteAccount(cfg.Namespace, args[0])
 		},

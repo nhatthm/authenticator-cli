@@ -15,15 +15,7 @@ func namespaceInfoCommand() *cobra.Command {
 		Use:   "info <namespace>",
 		Short: "Get a namespace info",
 		Long:  "Get a namespace info",
-		Args: func(_ *cobra.Command, args []string) error {
-			if l := len(args); l == 0 {
-				return errNamespaceIsRequired
-			} else if l > 1 {
-				return errTooManyArgs
-			}
-
-			return nil
-		},
+		Args:  exactNamespaceArgs(),
 		RunE: func(_ *cobra.Command, args []string) error {
 			return showNamespaceInfo(args[0])
 		},
