@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"os"
 	"slices"
 
 	"github.com/bool64/ctxd"
@@ -78,9 +79,9 @@ func addAccountToNamespace(ctx context.Context, cfg addAccountConfig, logger ctx
 		return errTOTPSecretIsRequired
 	}
 
-	fmt.Println(color.HiYellowString("⠿ Namespace:"), namespace)
-	fmt.Println(color.HiYellowString("⠿ Account:"), account.Name)
-	fmt.Println()
+	_, _ = fmt.Fprintln(os.Stderr, color.HiYellowString("Namespace:"), namespace)
+	_, _ = fmt.Fprintln(os.Stderr, color.HiYellowString("Account:"), account.Name)
+	_, _ = fmt.Fprintln(os.Stderr)
 
 	if !slices.Contains(allNamespaces, namespace) {
 		err = authenticator.CreateNamespace(namespace, namespace)
@@ -97,7 +98,7 @@ func addAccountToNamespace(ctx context.Context, cfg addAccountConfig, logger ctx
 		return err //nolint: wrapcheck
 	}
 
-	fmt.Println(color.GreenString("✓"), "done")
+	_, _ = fmt.Fprintln(os.Stderr, color.GreenString("✓"), "done")
 
 	return nil
 }
