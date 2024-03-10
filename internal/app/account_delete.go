@@ -3,6 +3,7 @@ package app
 import (
 	"errors"
 	"fmt"
+	"os"
 
 	"github.com/charmbracelet/huh"
 	"github.com/fatih/color"
@@ -65,7 +66,7 @@ func deleteAccount(namespace, account string) error {
 	}
 
 	if !confirm {
-		_, _ = fmt.Println(color.YellowString("operation canceled"))
+		_, _ = fmt.Fprintln(os.Stderr, color.YellowString("operation canceled"))
 
 		return nil
 	}
@@ -75,7 +76,7 @@ func deleteAccount(namespace, account string) error {
 		return err
 	}
 
-	fmt.Println(color.GreenString("✓"), "done")
+	_, _ = fmt.Fprintln(os.Stderr, color.GreenString("✓"), "done")
 
 	return nil
 }
