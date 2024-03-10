@@ -8,12 +8,11 @@ import (
 )
 
 var (
-	errAccountIsRequired              = errors.New("account is required")
-	errNoAccessToAccount              = errors.New("no access to the account")
-	errNamespaceAndAccountAreRequired = errors.New("namespace and account are required")
-	errTOTPSecretIsRequired           = errors.New("totp secret is required")
-	errTOTPSecretConfirmNeeded        = errors.New("need to confirm totp secret")
-	errTOTPSecretMismatch             = errors.New("totp secret does not match")
+	errAccountIsRequired       = errors.New("account is required")
+	errNoAccessToAccount       = errors.New("no access to the account")
+	errTOTPSecretIsRequired    = errors.New("totp secret is required")
+	errTOTPSecretConfirmNeeded = errors.New("need to confirm totp secret")
+	errTOTPSecretMismatch      = errors.New("totp secret does not match")
 )
 
 func accountCommand(logger *ctxd.Logger) *cobra.Command {
