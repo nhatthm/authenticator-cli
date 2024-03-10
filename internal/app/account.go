@@ -29,3 +29,15 @@ func accountCommand(logger *ctxd.Logger) *cobra.Command {
 
 	return cmd
 }
+
+func exactAccountArgs() cobra.PositionalArgs {
+	return func(_ *cobra.Command, args []string) error {
+		if l := len(args); l == 0 {
+			return errAccountIsRequired
+		} else if l > 1 {
+			return errTooManyArgs
+		}
+
+		return nil
+	}
+}

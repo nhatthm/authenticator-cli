@@ -17,15 +17,7 @@ func namespaceDeleteCommand() *cobra.Command {
 		Use:   "delete <namespace>",
 		Short: "Delete a namespace",
 		Long:  "Delete a namespace",
-		Args: func(_ *cobra.Command, args []string) error {
-			if l := len(args); l == 0 {
-				return errNamespaceIsRequired
-			} else if l > 1 {
-				return errTooManyArgs
-			}
-
-			return nil
-		},
+		Args:  exactNamespaceArgs(),
 		RunE: func(_ *cobra.Command, args []string) error {
 			return deleteNamespace(args[0])
 		},

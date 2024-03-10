@@ -27,3 +27,15 @@ func namespaceCommand() *cobra.Command {
 
 	return cmd
 }
+
+func exactNamespaceArgs() cobra.PositionalArgs {
+	return func(_ *cobra.Command, args []string) error {
+		if l := len(args); l == 0 {
+			return errNamespaceIsRequired
+		} else if l > 1 {
+			return errTooManyArgs
+		}
+
+		return nil
+	}
+}
