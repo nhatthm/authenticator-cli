@@ -1,0 +1,50 @@
+---
+name: "Generate Install Script"
+description: "Generate Install Script"
+
+inputs:
+  version:
+    required: true
+    description: "Artifact version"
+  revision:
+    required: true
+    description: "Artifact revision"
+
+outputs:
+  install-script:
+    description: "Generated install script"
+    value: ${{ steps.generate.outputs.install-script }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: "Generate Install Script"
+      id: generate
+      shell: bash
+      env:
+        VERSION: ${{ inputs.version }}
+        REVISION: ${{ inputs.revision }}
+      run: |
+        MAIN_PACKAGE=github.com/nhatthm/authenticator-cli
+        VERSION_PACKAGE=${MAIN_PACKAGE}/internal/version
+
+        cat <<EOF > out/install.sh
+        #!/usr/bin/env bash
+
+        GO=\${GO:-go}
+
+        if [[ -z "\$(command -v "\$GO")" ]]; then
+            echo "\$(GO) is not installed. Please install \$(GO) before running this script." >&2
+            exit 1
+        fi
+
+        BUILD_USER=\${GITHUB_ACTOR:-\${USER:-\$(whoami)}}
+        BUILD_DATE=\$(date +%FT%T%Z)
+
+        go install -ldflags "-X ${VERSION_PACKAGE}.version=${VERSION} -X ${VERSION_PACKAGE}.branch= -X ${VERSION_PACKAGE}.revision=${REVISION} -X ${VERSION_PACKAGE}.buildUser=\${BUILD_USER} -X ${VERSION_PACKAGE}.buildDate=\${BUILD_DATE}" ${MAIN_PACKAGE}/cmd/authenticator@${VERSION}
+
+        EOF
+
+        chmod +x out/install.sh
+
+        echo "install-script=out/install.sh" >> "$GITHUB_OUTPUT"
