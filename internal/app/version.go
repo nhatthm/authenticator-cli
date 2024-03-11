@@ -6,7 +6,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/nhatthm/authenticatorcli/internal/version"
+	"github.com/nhatthm/authenticator-cli/internal/version"
 )
 
 func versionCommand() *cobra.Command {

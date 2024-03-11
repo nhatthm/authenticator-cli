@@ -15,7 +15,7 @@ import (
 	"github.com/hellofresh/updater-go/v3"
 	"golang.org/x/oauth2"
 
-	"github.com/nhatthm/authenticatorcli/internal/version"
+	"github.com/nhatthm/authenticator-cli/internal/version"
 )
 
 const (
