@@ -98,6 +98,13 @@ jobs:
             tar -czf "${RELEASE}.tar.gz" "${RELEASE}"
           done
 
+      - name: Generate Install Script
+        id: generate-install-script
+        uses: ./.github/actions/generate-install-script
+        with:
+          version: v${{ env.VERSION }}
+          revision: ${{ github.sha }}
+
       - name: Delete release (${{ env.VERSION }})
         uses: nhatthm/gh-actions/github-delete-release@master
         with:
@@ -107,8 +114,10 @@ jobs:
         uses: nhatthm/gh-actions/github-release@master
         with:
           name: "${{ env.VERSION }}"
-          tag_name: "${{ env.VERSION }}"
+          tag_name: "v${{ env.VERSION }}"
           draft: false
           prerelease: false
-          files: "./out/*.tar.gz"
+          files: |
+            ./out/*.tar.gz
+            ./${{ steps.generate-install-script.outputs.install-script }}
           generate_release_notes: "true"
