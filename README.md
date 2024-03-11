@@ -54,7 +54,7 @@ To update the tool to the newest version, run `authenticator self-update`.
 If you have `go` installed, you can run the following command to install the latest version:
 
 ```bash
-$ /bin/bash -c "$(curl -fsSL https://github.com/nhatthm/authenticator-cli/HEAD/install.sh)"
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nhatthm/authenticator-cli/HEAD/install.sh)"
 ```
 
 The binary will be installed to `$GOBIN` or `$GOPATH/bin` (when `$GOBIN` is empty) directory. If you don't know where it is, you can run `go env` to find out.
