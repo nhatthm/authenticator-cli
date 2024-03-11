@@ -7,7 +7,7 @@ import (
 	"github.com/spf13/cobra"
 	"go.nhat.io/authenticator"
 
-	"github.com/nhatthm/authenticatorcli/internal/sudo"
+	"github.com/nhatthm/authenticator-cli/internal/sudo"
 )
 
 func namespaceInfoCommand() *cobra.Command {

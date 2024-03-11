@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/nhatthm/authenticatorcli/internal/updater"
+	"github.com/nhatthm/authenticator-cli/internal/updater"
 )
 
 func TestIgnoreReleaseVersion(t *testing.T) {

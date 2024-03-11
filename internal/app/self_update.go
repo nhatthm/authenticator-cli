@@ -15,8 +15,8 @@ import (
 	"github.com/schollz/progressbar/v3"
 	"github.com/spf13/cobra"
 
-	"github.com/nhatthm/authenticatorcli/internal/updater"
-	"github.com/nhatthm/authenticatorcli/internal/version"
+	"github.com/nhatthm/authenticator-cli/internal/updater"
+	"github.com/nhatthm/authenticator-cli/internal/version"
 )
 
 var (

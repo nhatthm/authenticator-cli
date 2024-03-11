@@ -2,7 +2,7 @@
 package main
 
 import (
-	"github.com/nhatthm/authenticatorcli/internal/app"
+	"github.com/nhatthm/authenticator-cli/internal/app"
 )
 
 func main() {

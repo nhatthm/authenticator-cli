@@ -1,4 +1,4 @@
-module github.com/nhatthm/authenticatorcli
+module github.com/nhatthm/authenticator-cli
 
 go 1.22
 
