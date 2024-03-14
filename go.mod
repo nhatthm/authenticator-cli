@@ -10,7 +10,7 @@ require (
 	github.com/charmbracelet/huh v0.3.0
 	github.com/fatih/color v1.16.0
 	github.com/google/go-github/v60 v60.0.0
-	github.com/hellofresh/updater-go/v3 v3.0.5
+	github.com/hellofresh/updater-go/v3 v3.0.6
 	github.com/schollz/progressbar/v3 v3.14.2
 	github.com/spf13/cobra v1.8.0
 	github.com/stretchr/testify v1.9.0
