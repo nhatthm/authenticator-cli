@@ -58,8 +58,8 @@ github.com/google/go-github/v60 v60.0.0 h1:oLG98PsLauFvvu4D/YPxq374jhSxFYdzQGNCy
 github.com/google/go-github/v60 v60.0.0/go.mod h1:ByhX2dP9XT9o/ll2yXAu2VD8l5eNVg8hD4Cr0S/LmQk=
 github.com/google/go-querystring v1.1.0 h1:AnCroh3fv4ZBgVIf1Iwtovgjaw/GiKJo8M8yD/fhyJ8=
 github.com/google/go-querystring v1.1.0/go.mod h1:Kcdr2DB4koayq7X8pmAG4sNG59So17icRSOU623lUBU=
-github.com/hellofresh/updater-go/v3 v3.0.5 h1:kwGehZEd3LjPapWVwAO2E4QUyDEZNXWDilmzyErVVHc=
-github.com/hellofresh/updater-go/v3 v3.0.5/go.mod h1:Pgoknjxqwos7vwgogTKcEiPqrao/Y0qnIeLypkAYGSM=
+github.com/hellofresh/updater-go/v3 v3.0.6 h1:V7xyDov05BzBcu8TW9/NyEyaDUKp148GybWFBksER64=
+github.com/hellofresh/updater-go/v3 v3.0.6/go.mod h1:ZcBfdBFCElU6myB+VvPQOr50Pu3L5ECoKQ6JYvAj2+w=
 github.com/iancoleman/orderedmap v0.3.0 h1:5cbR2grmZR/DiVt+VJopEhtVs9YGInGIxAoMJn+Ichc=
 github.com/iancoleman/orderedmap v0.3.0/go.mod h1:XuLcCUkdL5owUCQeF2Ue9uuw1EptkJDkXXS7VoV7XGE=
 github.com/inconshreveable/mousetrap v1.1.0 h1:wN+x4NVGpMsO7ErUn/mUI3vEoE6Jt13X2s0bqwp9tc8=
