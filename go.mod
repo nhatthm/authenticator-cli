@@ -14,7 +14,7 @@ require (
 	github.com/schollz/progressbar/v3 v3.14.2
 	github.com/spf13/cobra v1.8.0
 	github.com/stretchr/testify v1.9.0
-	go.nhat.io/authenticator v0.3.0
+	go.nhat.io/authenticator v0.5.0
 	go.nhat.io/exec v0.7.0
 	go.nhat.io/otp v0.8.0
 	go.uber.org/zap v1.27.0
@@ -53,7 +53,7 @@ require (
 	github.com/muesli/cancelreader v0.2.2 // indirect
 	github.com/muesli/reflow v0.3.0 // indirect
 	github.com/muesli/termenv v0.15.2 // indirect
-	github.com/pelletier/go-toml/v2 v2.1.1 // indirect
+	github.com/pelletier/go-toml/v2 v2.2.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/pquerna/otp v1.4.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
