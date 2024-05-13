@@ -8,7 +8,7 @@ require (
 	github.com/bool64/ctxd v1.2.1
 	github.com/bool64/zapctxd v1.1.1
 	github.com/charmbracelet/huh v0.3.0
-	github.com/fatih/color v1.16.0
+	github.com/fatih/color v1.17.0
 	github.com/google/go-github/v60 v60.0.0
 	github.com/hellofresh/updater-go/v3 v3.0.6
 	github.com/schollz/progressbar/v3 v3.14.2
