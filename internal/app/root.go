@@ -1,6 +1,7 @@
 package app
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"os"
@@ -14,7 +15,7 @@ import (
 	"go.uber.org/zap/zapcore"
 )
 
-var errTooManyArgs = fmt.Errorf("too many arguments")
+var errTooManyArgs = errors.New("too many arguments")
 
 var rootCfg = appConfig{}
 

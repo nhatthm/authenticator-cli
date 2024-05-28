@@ -1,7 +1,6 @@
 package version
 
 import (
-	"fmt"
 	"runtime"
 	"runtime/debug"
 	"strconv"
@@ -57,7 +56,7 @@ func (r Revision) Short() string {
 	}
 
 	if r.Dirty {
-		return fmt.Sprintf("%s-dirty", r.ID[:8])
+		return r.ID[:8] + "-dirty"
 	}
 
 	return r.ID[:8]
@@ -66,7 +65,7 @@ func (r Revision) Short() string {
 // String returns the revision string.
 func (r Revision) String() string {
 	if r.Dirty {
-		return fmt.Sprintf("%s-dirty", r.ID)
+		return r.ID + "-dirty"
 	}
 
 	return r.ID
@@ -89,8 +88,7 @@ func Info() Information {
 	}
 }
 
-//nolint:gochecknoinits
-func init() {
+func init() { //nolint: gochecknoinits,init
 	if repositoryName == "" {
 		repositoryName = appName
 	}

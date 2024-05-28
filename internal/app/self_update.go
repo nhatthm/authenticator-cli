@@ -34,7 +34,7 @@ func selfUpdateCommand(logger *ctxd.Logger) *cobra.Command {
 
 	cmd := &cobra.Command{
 		Use:   "self-update [<version>]",
-		Short: fmt.Sprintf("Check for new version of %s", version.Info().AppName),
+		Short: "Check for new version of " + version.Info().AppName,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if len(args) > 0 {
 				cfg.version = args[0]
@@ -102,7 +102,7 @@ func selfUpdate(ctx context.Context, cfg selfUpdateConfig, l updater.ReleaseLoca
 }
 
 func findRelease(ctx context.Context, out io.Writer, l updater.ReleaseLocator, appName, version string) (r updater.Release, err error) {
-	msg := fmt.Sprintf("Checking for new versions of %s", appName)
+	msg := "Checking for new versions of " + appName
 	pb := newProgressBar(out, -1, msg)
 
 	defer func() {

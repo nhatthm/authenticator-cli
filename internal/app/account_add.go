@@ -24,7 +24,7 @@ func accountAddCommand(logger *ctxd.Logger) *cobra.Command {
 		Use:   "add [-n <namespace>] [--qr </path/to/qr-code-image>]",
 		Short: "Add a new account",
 		Long:  "Add a new account",
-		RunE: func(cmd *cobra.Command, args []string) error {
+		RunE: func(cmd *cobra.Command, _ []string) error {
 			return addAccountToNamespace(cmd.Context(), cfg, *logger)
 		},
 	}
@@ -156,7 +156,7 @@ func getUserInput( //nolint: funlen
 			huh.NewInput().
 				Title("TOTP Secret").
 				Prompt("? ").
-				Password(true).
+				EchoMode(huh.EchoModePassword).
 				Validate(func(s string) error {
 					if s == "" {
 						return errTOTPSecretIsRequired
@@ -168,7 +168,7 @@ func getUserInput( //nolint: funlen
 			huh.NewInput().
 				Title("Confirm TOTP Secret").
 				Prompt("? ").
-				Password(true).
+				EchoMode(huh.EchoModePassword).
 				Validate(func(s string) error {
 					if s == "" {
 						return errTOTPSecretConfirmNeeded
