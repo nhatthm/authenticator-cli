@@ -51,7 +51,7 @@ func generateOTP(ctx context.Context, cfg otpConfig, account string, logger ctxd
 	}
 
 	if !cfg.CopyToClipboard {
-		_, _ = fmt.Fprintln(cfg.Output, otp)
+		_, _ = fmt.Fprintln(cfg.Output, otp) //nolint: errcheck
 
 		return nil
 	}

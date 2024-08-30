@@ -4,7 +4,7 @@ WORK_DIR = $(shell pwd)
 BUILD_DIR ?= out
 VENDOR_DIR = vendor
 
-GOLANGCI_LINT_VERSION ?= v1.58.0
+GOLANGCI_LINT_VERSION ?= v1.60.1
 
 GO ?= go
 GOLANGCI_LINT ?= $(shell go env GOPATH)/bin/golangci-lint-$(GOLANGCI_LINT_VERSION)
