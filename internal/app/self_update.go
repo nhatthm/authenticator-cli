@@ -91,12 +91,12 @@ func selfUpdate(ctx context.Context, cfg selfUpdateConfig, l updater.ReleaseLoca
 			}
 		}
 
-		_, _ = fmt.Fprintln(cfg.output, color.HiGreenString("⠿ Updated to version %s", updateTo.Name))
+		_, _ = fmt.Fprintln(cfg.output, color.HiGreenString("⠿ Updated to version %s", updateTo.Name)) //nolint: errcheck
 
 		return nil
 	}
 
-	_, _ = fmt.Fprintln(cfg.output, color.HiYellowString("⠿ Already up to date"))
+	_, _ = fmt.Fprintln(cfg.output, color.HiYellowString("⠿ Already up to date")) //nolint: errcheck
 
 	return nil
 }
@@ -109,7 +109,7 @@ func findRelease(ctx context.Context, out io.Writer, l updater.ReleaseLocator, a
 		_ = pb.Finish() //nolint: errcheck
 
 		if err == nil {
-			_, _ = fmt.Fprintf(out, "⠿ Found version: %s\n", r.Name)
+			_, _ = fmt.Fprintf(out, "⠿ Found version: %s\n", r.Name) //nolint: errcheck
 		}
 	}()
 
@@ -122,7 +122,7 @@ func configureDownloader(out io.Writer, token string, timeout time.Duration) {
 	})
 }
 
-func newProgressBar(out io.Writer, max int64, desc string, options ...progressbar.Option) *progressbar.ProgressBar {
+func newProgressBar(out io.Writer, maxValue int64, desc string, options ...progressbar.Option) *progressbar.ProgressBar {
 	options = append([]progressbar.Option{
 		progressbar.OptionSetDescription(desc),
 		progressbar.OptionSetWidth(80), //nolint: gomnd
@@ -136,7 +136,7 @@ func newProgressBar(out io.Writer, max int64, desc string, options ...progressba
 		progressbar.OptionClearOnFinish(),
 	}, options...)
 
-	return progressbar.NewOptions64(max, options...)
+	return progressbar.NewOptions64(maxValue, options...)
 }
 
 type roundTripperFunc func(*http.Request) (*http.Response, error)
@@ -166,8 +166,8 @@ func downloadProgress(next http.RoundTripper, out io.Writer, desc string) roundT
 			ReadCloser: &body,
 			pb:         pb,
 			onComplete: func(pb *progressbar.ProgressBar) {
-				_ = pb.Finish() //nolint: errcheck
-				_, _ = fmt.Fprintf(out, "⠿ Download Complete (%s)\n", byteCountSI(contentLength))
+				_ = pb.Finish()                                                                   //nolint: errcheck
+				_, _ = fmt.Fprintf(out, "⠿ Download Complete (%s)\n", byteCountSI(contentLength)) //nolint: errcheck
 			},
 		}
 

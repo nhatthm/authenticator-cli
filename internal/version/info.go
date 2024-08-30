@@ -88,7 +88,7 @@ func Info() Information {
 	}
 }
 
-func init() { //nolint: gochecknoinits,init
+func init() { //nolint: gochecknoinits
 	if repositoryName == "" {
 		repositoryName = appName
 	}
