@@ -6,7 +6,7 @@ toolchain go1.22.0
 
 require (
 	github.com/bool64/ctxd v1.2.1
-	github.com/bool64/zapctxd v1.1.1
+	github.com/bool64/zapctxd v1.2.0
 	github.com/charmbracelet/huh v0.6.0
 	github.com/fatih/color v1.17.0
 	github.com/google/go-github/v60 v60.0.0
