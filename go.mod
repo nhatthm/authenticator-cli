@@ -14,16 +14,16 @@ require (
 	github.com/schollz/progressbar/v3 v3.16.1
 	github.com/spf13/cobra v1.8.1
 	github.com/stretchr/testify v1.9.0
-	go.nhat.io/authenticator v0.6.0
+	go.nhat.io/authenticator v0.7.0
 	go.nhat.io/exec v0.7.0
-	go.nhat.io/otp v0.9.0
+	go.nhat.io/otp v0.10.0
 	go.uber.org/zap v1.27.0
 	golang.org/x/oauth2 v0.23.0
 )
 
 require (
+	al.essio.dev/pkg/shellescape v1.5.1 // indirect
 	github.com/Masterminds/semver/v3 v3.3.0 // indirect
-	github.com/alessio/shellescape v1.4.2 // indirect
 	github.com/atotto/clipboard v0.1.4 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/boombuler/barcode v1.0.2 // indirect
@@ -64,19 +64,19 @@ require (
 	github.com/shurcooL/githubv4 v0.0.0-20240727222349-48295856cce7 // indirect
 	github.com/shurcooL/graphql v0.0.0-20230722043721-ed46e5a46466 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/zalando/go-keyring v0.2.5 // indirect
+	github.com/zalando/go-keyring v0.2.6 // indirect
 	go.nhat.io/clock v0.7.0 // indirect
 	go.nhat.io/redact v0.1.0 // indirect
-	go.nhat.io/secretstorage v0.4.0 // indirect
+	go.nhat.io/secretstorage v0.5.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.54.0 // indirect
 	go.opentelemetry.io/otel v1.29.0 // indirect
 	go.opentelemetry.io/otel/metric v1.29.0 // indirect
 	go.opentelemetry.io/otel/trace v1.29.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/sync v0.8.0 // indirect
-	golang.org/x/sys v0.25.0 // indirect
+	golang.org/x/sys v0.26.0 // indirect
 	golang.org/x/term v0.24.0 // indirect
-	golang.org/x/text v0.18.0 // indirect
+	golang.org/x/text v0.19.0 // indirect
 	golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
