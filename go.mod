@@ -18,7 +18,7 @@ require (
 	go.nhat.io/exec v0.7.0
 	go.nhat.io/otp v0.10.0
 	go.uber.org/zap v1.27.0
-	golang.org/x/oauth2 v0.25.0
+	golang.org/x/oauth2 v0.26.0
 )
 
 require (
