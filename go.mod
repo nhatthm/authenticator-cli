@@ -12,7 +12,7 @@ require (
 	github.com/google/go-github/v60 v60.0.0
 	github.com/hellofresh/updater-go/v3 v3.0.7
 	github.com/schollz/progressbar/v3 v3.18.0
-	github.com/spf13/cobra v1.8.1
+	github.com/spf13/cobra v1.9.1
 	github.com/stretchr/testify v1.10.0
 	go.nhat.io/authenticator v0.7.0
 	go.nhat.io/exec v0.7.0
@@ -63,7 +63,7 @@ require (
 	github.com/rogpeppe/go-internal v1.12.0 // indirect
 	github.com/shurcooL/githubv4 v0.0.0-20240727222349-48295856cce7 // indirect
 	github.com/shurcooL/graphql v0.0.0-20230722043721-ed46e5a46466 // indirect
-	github.com/spf13/pflag v1.0.5 // indirect
+	github.com/spf13/pflag v1.0.6 // indirect
 	github.com/zalando/go-keyring v0.2.6 // indirect
 	go.nhat.io/clock v0.7.0 // indirect
 	go.nhat.io/redact v0.1.0 // indirect
