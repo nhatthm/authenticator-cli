@@ -1,8 +1,7 @@
 module github.com/nhatthm/authenticator-cli
 
 go 1.22
-
-toolchain go1.22.0
+toolchain go1.23.7
 
 require (
 	github.com/bool64/ctxd v1.2.1
@@ -18,7 +17,7 @@ require (
 	go.nhat.io/exec v0.7.0
 	go.nhat.io/otp v0.10.0
 	go.uber.org/zap v1.27.0
-	golang.org/x/oauth2 v0.26.0
+	golang.org/x/oauth2 v0.28.0
 )
 
 require (
