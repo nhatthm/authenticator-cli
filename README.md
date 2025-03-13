@@ -14,7 +14,7 @@ CLI tool for managing and generating one-time passwords for multiple accounts.
 
 ## Prerequisites
 
-- `Go >= 1.22`
+- `Go >= 1.24`
 
 ### Keyring
 

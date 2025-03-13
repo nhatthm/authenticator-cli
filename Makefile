@@ -4,7 +4,7 @@ WORK_DIR = $(shell pwd)
 BUILD_DIR ?= out
 VENDOR_DIR = vendor
 
-GOLANGCI_LINT_VERSION ?= v1.61.0
+GOLANGCI_LINT_VERSION ?= v1.64.7
 
 GO ?= go
 GOLANGCI_LINT ?= $(shell go env GOPATH)/bin/golangci-lint-$(GOLANGCI_LINT_VERSION)
@@ -15,6 +15,14 @@ VHS_TAPES = $(subst .tape,.gif,$(shell find resources/docs -type f -name "*.tape
 $(VENDOR_DIR):
 	@mkdir -p $(VENDOR_DIR)
 	@$(GO) mod vendor
+	@$(GO) mod tidy
+
+.PHONE: update
+update:
+	@$(GO) get -u ./...
+
+.PHONE: tidy
+tidy:
 	@$(GO) mod tidy
 
 .PHONY: generate
