@@ -13,7 +13,7 @@ require (
 	github.com/spf13/cobra v1.9.1
 	github.com/stretchr/testify v1.10.0
 	go.nhat.io/authenticator v0.8.0
-	go.nhat.io/exec v0.7.0
+	go.nhat.io/exec v0.8.0
 	go.nhat.io/otp v0.11.0
 	go.uber.org/zap v1.27.0
 	golang.org/x/oauth2 v0.28.0
