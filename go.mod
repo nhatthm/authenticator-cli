@@ -5,7 +5,7 @@ go 1.24
 require (
 	github.com/bool64/ctxd v1.2.1
 	github.com/bool64/zapctxd v1.2.0
-	github.com/charmbracelet/huh v0.6.0
+	github.com/charmbracelet/huh v0.7.0
 	github.com/fatih/color v1.18.0
 	github.com/google/go-github/v60 v60.0.0
 	github.com/hellofresh/updater-go/v3 v3.0.7
@@ -26,7 +26,7 @@ require (
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/boombuler/barcode v1.0.2 // indirect
 	github.com/catppuccin/go v0.3.0 // indirect
-	github.com/charmbracelet/bubbles v0.20.0 // indirect
+	github.com/charmbracelet/bubbles v0.21.0 // indirect
 	github.com/charmbracelet/bubbletea v1.3.4 // indirect
 	github.com/charmbracelet/colorprofile v0.2.3-0.20250311203215-f60798e515dc // indirect
 	github.com/charmbracelet/lipgloss v1.1.0 // indirect
