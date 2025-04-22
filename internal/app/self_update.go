@@ -125,13 +125,13 @@ func configureDownloader(out io.Writer, token string, timeout time.Duration) {
 func newProgressBar(out io.Writer, maxValue int64, desc string, options ...progressbar.Option) *progressbar.ProgressBar {
 	options = append([]progressbar.Option{
 		progressbar.OptionSetDescription(desc),
-		progressbar.OptionSetWidth(80), //nolint: gomnd
+		progressbar.OptionSetWidth(80), //nolint: mnd
 		progressbar.OptionFullWidth(),
 		progressbar.OptionSetWriter(out),
 		progressbar.OptionSetElapsedTime(false),
 		progressbar.OptionSetPredictTime(false),
-		progressbar.OptionThrottle(65 * time.Millisecond), //nolint: gomnd
-		progressbar.OptionSpinnerType(14),                 //nolint: gomnd
+		progressbar.OptionThrottle(65 * time.Millisecond), //nolint: mnd
+		progressbar.OptionSpinnerType(14),                 //nolint: mnd
 		progressbar.OptionSetRenderBlankState(true),
 		progressbar.OptionClearOnFinish(),
 	}, options...)
