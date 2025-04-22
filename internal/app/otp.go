@@ -77,7 +77,7 @@ func copyOTP(ctx context.Context, otp string, logger ctxd.Logger) error {
 		command = "clip"
 
 	default:
-		return fmt.Errorf("unsupported platform: %s", runtime.GOOS) //nolint: goerr113
+		return fmt.Errorf("unsupported platform: %s", runtime.GOOS) //nolint: err113
 	}
 
 	_, err := exec.RunWithContext(ctx, command,
