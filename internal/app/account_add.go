@@ -40,7 +40,7 @@ type addAccountConfig struct {
 	QRCodeFile string
 }
 
-func addAccountToNamespace(ctx context.Context, cfg addAccountConfig, logger ctxd.Logger) error { //nolint: cyclop,funlen
+func addAccountToNamespace(ctx context.Context, cfg addAccountConfig, logger ctxd.Logger) error { //nolint: cyclop
 	var (
 		namespace string
 		account   authenticator.Account

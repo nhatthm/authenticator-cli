@@ -12,13 +12,14 @@ linters:
     - ireturn
     - lll
     - mnd
-    - nolintlint
+    - noinlineerr
     - nonamedreturns
     - paralleltest
     - tagliatelle
     - testpackage
     - varnamelen
     - wrapcheck
+    - wsl
   settings:
     dupl:
       threshold: 100

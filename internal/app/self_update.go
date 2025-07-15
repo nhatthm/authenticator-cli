@@ -177,6 +177,7 @@ func downloadProgress(next http.RoundTripper, out io.Writer, desc string) roundT
 
 type reader struct {
 	io.ReadCloser
+
 	pb         *progressbar.ProgressBar
 	onComplete func(pb *progressbar.ProgressBar)
 }
